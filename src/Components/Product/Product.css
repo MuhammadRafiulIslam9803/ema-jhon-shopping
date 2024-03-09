@@ -1,0 +1,20 @@
+.product-style{
+    border: 1px solid darkkhaki;
+    border-radius: 15px;
+    padding: 20px;
+    /* height: 500px; */
+   
+
+}
+.btn-style{
+    background-color: bisque;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 30px;
+    bottom: 0;
+}
+.imges{
+    border-radius: 10px;
+    height: 55%;
+    width: 100%;
+}
