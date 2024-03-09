@@ -1,0 +1,17 @@
+.header-Style{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+
+}
+.Header-Ankor a{
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.Header-Ankor a:hover{
+    color: orange;
+}
