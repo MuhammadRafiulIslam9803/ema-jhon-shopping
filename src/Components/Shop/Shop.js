@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Shop.css'
 import Product from '../Product/Product';
+import Claculate from '../Calculation/Claculate';
+import { addToLC, getStoredCart } from '../../Utilities/fakedb';
 
 const Shop = () => {
     const [products ,setProducts] = useState([])
@@ -11,10 +13,28 @@ const Shop = () => {
         .then(data => setProducts(data))
     } ,[])
 
+    useEffect( () => {
+        const storedCart = getStoredCart()
+        const allAdeddedCart =[]
+        for(const id in storedCart){
+            const addedProduct = products.find(product => product.id === id)
+            if(addedProduct){
+
+                const storedCardQuantity = storedCart[id]
+                addedProduct.quantity =storedCardQuantity;
+                allAdeddedCart.push(addedProduct)
+   
+             }
+            // console.log(allAdeddedCart)
+        //     console.log(addedProduct)
+        }
+        setCart(allAdeddedCart)
+    } , [products])
+
     const updateCalculatorBtn = product =>{
         const newCart = [...cart ,product]
         setCart(newCart)
-        console.log(newCart.length)
+        addToLC(product.id)
     }
     return (
         <div className='Shop-conteiner'>
@@ -28,9 +48,10 @@ const Shop = () => {
                 }
             </div>
             <div className='Calculate-part'>
-                <h1>Selected Cart :{cart.length}</h1> 
                 {
-                    console.log(cart)
+                    <Claculate 
+                    cart = {cart}
+                    ></Claculate>
                 }    
             </div>
         </div>
