@@ -1,0 +1,30 @@
+.image img{
+    width: 100px;
+}
+.products-conteiner{
+    display: flex;
+    align-items: center;
+    border: 1px solid darkcyan;
+    border-radius: 20px;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+.product-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.btn-stayle{
+    padding: 30px;
+    border-radius: 50%;
+    border: 0;
+    color: red;
+    font-weight: bold;
+    font-size: medium;
+    background-color: lightgoldenrodyellow;
+}
+.btn-stayle:hover{
+    background-color: goldenrod ;
+}

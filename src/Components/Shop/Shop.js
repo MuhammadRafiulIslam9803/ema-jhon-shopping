@@ -8,31 +8,38 @@ const Shop = () => {
     const [products ,setProducts] = useState([])
     const [cart ,setCart] = useState([])
     useEffect( ()=>{
-        fetch(' https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
+        fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
         .then(res => res.json())
         .then(data => setProducts(data))
     } ,[])
 
     useEffect( () => {
-        const storedCart = getStoredCart()
-        const allAdeddedCart =[]
+        const storedCart = getStoredCart();
+        const savedCart = [];
         for(const id in storedCart){
-            const addedProduct = products.find(product => product.id === id)
+            const addedProduct = products.find(product => product.id === id);
             if(addedProduct){
-
-                const storedCardQuantity = storedCart[id]
-                addedProduct.quantity =storedCardQuantity;
-                allAdeddedCart.push(addedProduct)
-   
-             }
-            // console.log(allAdeddedCart)
-        //     console.log(addedProduct)
+                const quantity = storedCart[id];
+                addedProduct.quantity = quantity;
+                savedCart.push(addedProduct);
+            }
         }
-        setCart(allAdeddedCart)
+        setCart(savedCart);
     } , [products])
 
     const updateCalculatorBtn = product =>{
-        const newCart = [...cart ,product]
+        let newCart = [];
+        const exists = cart.find(product => product.id === product.id);
+        if(!exists){
+            product.quantity = 1;
+            newCart = [...cart, product];
+        }
+        else{
+            const rest = cart.filter(product => product.id !== product.id);
+            exists.quantity = exists.quantity + 1;
+            newCart = [...rest, exists];
+        }
+        
         setCart(newCart)
         addToLC(product.id)
     }

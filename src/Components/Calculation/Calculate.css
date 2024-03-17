@@ -1,6 +1,12 @@
-.CalculateStyle{
+.cart{
     padding: 20px;
     margin-top: 20px;
-    position: sticky;
     top: 0px;
+    color: rgb(75, 70, 70);
+}
+.grand-total{
+    color: rgb(77, 1, 1);
+}
+.cart h2{
+    color: rgb(94, 195, 94);
 }
